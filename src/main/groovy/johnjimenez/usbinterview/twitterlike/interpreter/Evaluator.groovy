@@ -4,6 +4,9 @@ package johnjimenez.usbinterview.twitterlike.interpreter
 // <subject> ::== <user-name> | <follower> | <poster>
 // <action>  ::== '' | 'follows' | '->' | 'wall'
 // <subject> ::== '' | <followees> | <message>
+// 
+// However, the instructions are fixed-position oriented and will not require
+// the composite pattern traditionally composing the interpreter one.
 
 class Evaluator {
     private def syntaxTree
