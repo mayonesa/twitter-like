@@ -2,15 +2,11 @@ twitter-like
 ============
 
 A simplified, console-based version of a Twitter-like social networking application.
-To run, in your console/terminal, cd to the root of the project and type 
+To run in Unix-related terminals, cd to the root of the project and type 
 
     ./run
 
-for Unix-related OSs or 
-
-    gradlew -q run
-    
-for Windows.
+or for Windows double-click on run.bat
 
 
 Playing scenarios:
