@@ -1,0 +1,21 @@
+apply plugin: 'groovy'
+apply plugin:'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.2.1'
+    compile 'joda-time:joda-time:2.3'
+}
+
+mainClassName = 'johnjimenez.usbinterview.twitterlike.ui.ConsoleView'
+
+run {
+    standardInput = System.in
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.9'
+}
