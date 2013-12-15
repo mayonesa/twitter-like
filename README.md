@@ -6,7 +6,7 @@ To run in Unix-related terminals, cd to the root of the project and type
 
     ./run
 
-or for Windows double-click on run.bat
+or for Windows double-click on **run.bat**
 
 
 Playing scenarios:
