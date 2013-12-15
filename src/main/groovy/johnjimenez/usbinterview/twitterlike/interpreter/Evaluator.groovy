@@ -5,9 +5,10 @@ package johnjimenez.usbinterview.twitterlike.interpreter
 // <action>  ::== '' | 'follows' | '->' | 'wall'
 // <subject> ::== '' | <followees> | <message>
 // 
-// However, the instructions are fixed-position oriented and will not require
-// the composite pattern traditionally composing the interpreter one.
-
+// Inspired by the interpeter pattern. However, the commands are fixed-position oriented
+// and will not require the composite pattern traditionally composing the interpreter one.
+// In addition, there will be no need to pass the context since there is no context
+// outside of the entered command.
 class Evaluator {
     private def syntaxTree
  
