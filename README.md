@@ -8,7 +8,7 @@ To run, in your console/terminal, cd to the root of the project and type
 
 for Unix-related OSs or 
 
-    gradlew.bat -q run
+    gradlew -q run
     
 for Windows.
 
