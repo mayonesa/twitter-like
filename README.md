@@ -63,19 +63,19 @@ Bob - at least it's sunny (2 minutes ago)
 
 Alice - I love the weather today (5 minutes ago)
 
-General informations
+General information
 
 - Application use the console for input and output;
 
 - User submits commands to the application:
 
-• posting: <user name> -> <message>
+• posting: [user name] -> [message]
 
-• reading: <user name>
+• reading: [user name]
 
-• following: <user name> follows <another user>
+• following: [user name] follows [another user]
 
-• wall: <user name> wall
+• wall: [user name] wall
 
 - Assumes that the user will always type the correct commands.
 
