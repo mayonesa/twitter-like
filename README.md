@@ -2,54 +2,69 @@ twitter-like
 ============
 
 A simplified, console-based version of a Twitter-like social networking application.
-To run in Unix-related terminals, cd to the root of the project and type 
+
+System requirements
+-------------------
+* Java 6 or 7
+
+Running instructions
+--------------------
+In Unix-related terminals/emulators, cd to the root of the project and enter
 
     ./run
 
-or for Windows double-click on run.bat
+or double-click on **run.bat** in Windows Explorer.
+
+Doing this will:
+
+1. download and install Gradle
+2. download and install project dependencies (Groovy and joda-time)
+3. compile the source code
+4. connect the standard input
+5. run twitter-like
 
 
-Playing scenarios:
+Playing scenarios
+-----------------
 
 Posting: Alice can publish messages to a personal timeline
 
-> Alice -> I love the weather today
 
-> Bob -> Oh, we lost!
+\> Alice -> I love the weather today
+\> Bob -> Oh, we lost!
+\> Bob -> at least it's sunny
 
-> Bob -> at least it's sunny
 
 Note: The program creates the user when the first post is posted.
 
 Reading: Bob can view Alice’s timeline
 
-> Alice 
+\> Alice 
+
 
 I love the weather today (5 minutes ago)
 
-> Bob
+
+\> Bob
+
 
 Oh, we lost! (1 minute ago)
 
 at least it's sunny (2 minutes ago)
 
-Following: Charlie can subscribe to Alice’s and Bob’s timelines, and view 
 
-them on his wall, an aggregated list of all subscriptions 
+Following: Charlie can subscribe to Alice’s and Bob’s timelines, and view them on his wall, an aggregated list of all subscriptions 
 
-> Charlie -> I'm in New York today! Anyone wants to have a coffee?
-
-> Charlie follows Alice
-
-> Charlie wall 
+\> Charlie -> I'm in New York today! Anyone wants to have a coffee?
+\> Charlie follows Alice
+\> Charlie wall 
 
 Charlie - I'm in New York today! Anyone wants to have a coffee? (2 seconds ago)
 
 Alice - I love the weather today (5 minutes ago)
 
-> Charlie follows Bob
-
-> Charlie wall 
+\> Charlie follows Bob
+\> Charlie wall 
 
 Charlie - I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)
 
@@ -59,11 +74,9 @@ Bob - at least it's sunny (2 minutes ago)
 
 Alice - I love the weather today (5 minutes ago)
 
-General information
 
-- Application use the console for input and output;
-
-- User submits commands to the application:
+Grammar
+-------------------
 
 • posting: [user name] -> [message]
 
@@ -72,7 +85,3 @@ General information
 • following: [user name] follows [another user]
 
 • wall: [user name] wall
-
-- Assumes that the user will always type the correct commands.
-
-- Uses groovy/gradle
