@@ -11,4 +11,15 @@ class User {
     String toString() {
         name
     }
+
+    boolean equals(Object o) {
+        if (o instanceof User) {
+            return ((User) o).name == name
+        }
+        false
+    }
+    
+    int hashCode() {
+        name.hashCode()
+    }
 }

@@ -18,4 +18,16 @@ class Post {
     String toString() {
         "$message (${getElapsedTime(createDate)} ago)"
     }
+    
+    boolean equals(Object o) {
+        if (o instanceof Post) {
+            def post = (Post) o
+            return post.poster == poster && post.message == message
+        }
+        false
+    }
+    
+    int hashCode() {
+        message.hashCode() * (poster.hashCode() + 1)
+    }
 }

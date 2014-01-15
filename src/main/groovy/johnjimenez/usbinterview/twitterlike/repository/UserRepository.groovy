@@ -1,5 +1,7 @@
 package johnjimenez.usbinterview.twitterlike.repository
 
+import groovy.transform.PackageScope
+
 import johnjimenez.usbinterview.twitterlike.domain.User
 
 class UserRepository {
@@ -20,5 +22,9 @@ class UserRepository {
             users.put name, user
             user
         }
+    }
+    
+    @PackageScope void clear() {
+        users.clear()
     }
 }

@@ -8,6 +8,8 @@ repositories {
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.2.1'
     compile 'joda-time:joda-time:2.3'
+    compile 'org.slf4j:slf4j-simple:1.6.1'
+    testCompile 'junit:junit:4.11'
 }
 
 mainClassName = 'johnjimenez.usbinterview.twitterlike.ui.ConsoleView'

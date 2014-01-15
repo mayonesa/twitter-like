@@ -1,5 +1,7 @@
 package johnjimenez.usbinterview.twitterlike.repository
 
+import groovy.transform.PackageScope
+
 import johnjimenez.usbinterview.twitterlike.domain.*
 
 class PostRepository {
@@ -28,5 +30,9 @@ class PostRepository {
             }
         }
         selectedPosts
+    }
+    
+    @PackageScope void clear() {
+        allPosts.clear()
     }
 }

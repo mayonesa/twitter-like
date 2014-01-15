@@ -18,12 +18,19 @@ or double-click on **run.bat** in Windows Explorer.
 Doing this will:
 
 1. download and install Gradle
-2. download and install project dependencies (Groovy and joda-time)
+2. download and install project dependencies (Groovy, junit, slf4j, and joda-time)
 3. compile the source code
 4. connect the standard input
 5. run twitter-like
 
-
+Testing instructions
+--------------------
+Unix:
+    ./gradlew test
+    
+Windows:
+    gradlew.bat test
+    
 Playing scenarios
 -----------------
 
