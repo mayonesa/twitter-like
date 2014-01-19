@@ -1,9 +1,9 @@
 package johnjimenez.usbinterview.twitterlike.interpreter
 
-// <command> ::== <subject> ' ' <action> ' ' <subject>
+// <command> ::== <subject> ' ' <action> ' ' <object>
 // <subject> ::== <user-name> | <follower> | <poster>
 // <action>  ::== '' | 'follows' | '->' | 'wall'
-// <subject> ::== '' | <followees> | <message>
+// <object> ::== '' | <followees> | <message>
 // 
 // Inspired by the interpeter pattern. However, the commands are fixed-position oriented
 // and will not require the composite pattern traditionally composing the interpreter one.
