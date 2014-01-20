@@ -1,7 +1,7 @@
 twitter-like
 ============
 
-A simplified, console-based version of a Twitter-like social networking application. Uses in-memory db for ease of potential persistence enhancement. 
+A simplified, console-based version of a Twitter-like social networking application. Uses in-memory db for ease of potential future persistence capability addition. 
 
 System requirements
 -------------------
