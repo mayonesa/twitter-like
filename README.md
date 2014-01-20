@@ -1,11 +1,11 @@
 twitter-like
 ============
 
-A simplified, console-based version of a Twitter-like social networking application.
+A simplified, console-based version of a Twitter-like social networking application. Uses in-memory db for ease of potential persistence enhancement. 
 
 System requirements
 -------------------
-* Java 6 or 7
+* Java 7 (preferred) or 6
 
 Running instructions
 --------------------
@@ -18,7 +18,7 @@ or double-click on **run.bat** in Windows Explorer.
 Doing this will:
 
 1. download and install Gradle
-2. download and install project dependencies (Groovy, junit, slf4j, and joda-time)
+2. download and install project dependencies (groovy, spring, hibernate, JSR-330, userType, junit, slf4j, logback, and joda-time)
 3. compile the source code
 4. connect the standard input
 5. run twitter-like
