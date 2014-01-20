@@ -5,7 +5,7 @@ A simplified, console-based version of a Twitter-like social networking applicat
 
 System requirements
 -------------------
-* Java 7 (preferred) or 6
+* Java 7 (preferred) or 6 (fails integration test if run on granularity of INFO or higher) 
 
 Running instructions
 --------------------
