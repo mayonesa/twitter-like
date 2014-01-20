@@ -1,27 +1,39 @@
 package johnjimenez.usbinterview.twitterlike.service
 
+import javax.inject.Inject
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
+
+@Service('service')
+@Transactional(readOnly = true)
 class ServiceFacade {
-    private static ServiceFacade instance = new ServiceFacade()
+    @Inject
+    private PostService postService
     
-    private ServiceFacade() { }
+    @Inject
+    private ReadService readService
     
-    static ServiceFacade getService() {
-        instance
+    @Inject
+    private FollowService followService
+    
+    @Inject
+    private WallService wallService
+    
+    @Transactional(readOnly = false)
+    def post(String message, String posterName) {
+        postService.execute message, posterName
     }
     
-    void post(String message, String posterName) {
-        PostService.instance.execute message, posterName
+    def getTimeline(String userName) {
+        readService.getTimeline userName
     }
     
-    List getTimeline(String userName) {
-        ReadService.instance.getTimeline userName
+    @Transactional(readOnly = false)
+    def follow(String followerName, String followeeName) {
+        followService.execute followerName, followeeName
     }
     
-    void follow(String followerName, String followeeName) {
-        FollowService.instance.execute followerName, followeeName
-    }
-    
-    List getWall(String userName) {
-        WallService.instance.getWall userName
+    def getWall(String userName) {
+        wallService.getWall userName
     }
 }

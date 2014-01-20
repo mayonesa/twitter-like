@@ -6,17 +6,17 @@ import org.joda.time.format.PeriodFormatterBuilder
 
 class PostPrintHelper {
 
-    static getStringBuilder(List posts, Closure getStringBuilderComponent) {
-        StringBuilder sb = new StringBuilder('\n')
+    static def getStringBuilder(posts, getStringBuilderComponent) {
+        def sb = new StringBuilder('\n')
         posts.each {
             sb.append "${getStringBuilderComponent(it)}\n"
         }
         sb
     }
     
-    static String getElapsedTime(LocalDateTime initialDate) {
-        Period elapsedPeriod = new Period(initialDate, new LocalDateTime())
-        PeriodFormatterBuilder formatterBuilder = new PeriodFormatterBuilder()
+    static def getElapsedTime(initialDate) {
+        def elapsedPeriod = new Period(initialDate, new LocalDateTime())
+        def formatterBuilder = new PeriodFormatterBuilder()
         if (elapsedPeriod.getYears() > 0) {
             formatterBuilder.appendYears().appendSuffix(' year', ' years')
         } else if (elapsedPeriod.getMonths() > 0) {

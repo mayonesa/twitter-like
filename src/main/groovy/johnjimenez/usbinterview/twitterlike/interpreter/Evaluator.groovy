@@ -1,5 +1,7 @@
 package johnjimenez.usbinterview.twitterlike.interpreter
 
+import javax.inject.*
+
 // <command> ::== <subject> ' ' <action> ' ' <object>
 // <subject> ::== <user-name> | <follower> | <poster>
 // <action>  ::== '' | 'follows' | '->' | 'wall'
@@ -9,32 +11,37 @@ package johnjimenez.usbinterview.twitterlike.interpreter
 // and will not require the composite pattern traditionally composing the interpreter one.
 // In addition, there will be no need to pass the context since there is no context
 // outside of the entered command.
+@Named
 class Evaluator {
-    private def syntaxTree
- 
-    Evaluator(String command) {
+    @Inject
+    def postExpression
+    
+    @Inject
+    def readExpression
+    
+    @Inject
+    def wallExpression
+    
+    @Inject
+    def followExpression
+    
+    def interpret(command) {
         Scanner commandTokens = new Scanner(command).useDelimiter(' ')
-        String subject = commandTokens.next()
+        def subject = commandTokens.next()
         if (!commandTokens.hasNext()) {
-            syntaxTree = new ReadExpression(userName:subject)
+            readExpression.interpret subject
         } else {
-            String action = commandTokens.next()
+            def action = commandTokens.next()
             if (!commandTokens.hasNext()) {
-                syntaxTree = new WallExpression(userName:subject)
+                wallExpression.interpret subject
             } else {
-                String object = commandTokens.skip(' ').nextLine()
+                def object = commandTokens.skip(' ').nextLine()
                 if (action == '->') {
-                    syntaxTree = new PostExpression(posterName:subject, 
-                      message: object)
+                    postExpression.interpret object, subject
                 } else {
-                    syntaxTree = new FollowExpression(followerName:subject, 
-                      followeeName:object)
+                    followExpression.interpret subject, object
                 }
             }
         }
-    }
-    
-    def interpret() {
-        syntaxTree.interpret()
     }
 }

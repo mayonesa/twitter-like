@@ -1,18 +1,16 @@
 package johnjimenez.usbinterview.twitterlike.service
 
-import static johnjimenez.usbinterview.twitterlike.repository.UserRepository.userRepository
+import javax.inject.Inject
+import org.springframework.stereotype.Service
 
+import johnjimenez.usbinterview.twitterlike.repository.UserRepository
+
+@Service
 class FollowService {
-    private static FollowService instance = new FollowService()
+    @Inject
+    private UserRepository userRepository
     
-    private FollowService() { }
-    
-    static getInstance() {
-        instance
-    }
-    
-    void execute(String followerName, String followeeName) {
-        userRepository.getUserByName(followerName).follow \
-          userRepository.getUserByName(followeeName)
+    void execute(followerName, followeeName) {
+        userRepository.makeFollow followerName, followeeName
     }
 }

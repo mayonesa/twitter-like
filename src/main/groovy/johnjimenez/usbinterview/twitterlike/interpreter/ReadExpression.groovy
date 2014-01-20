@@ -1,14 +1,15 @@
 package johnjimenez.usbinterview.twitterlike.interpreter
 
-import groovy.transform.PackageScope
+import javax.inject.*
 
-import static johnjimenez.usbinterview.twitterlike.service.ServiceFacade.service
 import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getStringBuilder
 
-@PackageScope class ReadExpression {
-    String userName
+@Named
+class ReadExpression {
+    @Inject
+    def service
     
-    @PackageScope StringBuilder interpret() {
+    StringBuilder interpret(userName) {
         getStringBuilder service.getTimeline(userName), { post ->
             post
         }

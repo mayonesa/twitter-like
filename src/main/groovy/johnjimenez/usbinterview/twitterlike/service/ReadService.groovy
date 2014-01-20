@@ -1,18 +1,19 @@
 package johnjimenez.usbinterview.twitterlike.service
 
-import static johnjimenez.usbinterview.twitterlike.repository.PostRepository.postRepository
-import static johnjimenez.usbinterview.twitterlike.repository.UserRepository.userRepository
+import javax.inject.Inject
+import org.springframework.stereotype.Service
 
+import johnjimenez.usbinterview.twitterlike.repository.*
+
+@Service
 class ReadService {
-    private static ReadService instance = new ReadService()
+    @Inject
+    private PostRepository postRepository
     
-    private ReadService() { }
+    @Inject
+    private UserRepository userRepository
     
-    static getInstance() {
-        instance
-    }
-    
-    List getTimeline(String userName) {
-        postRepository.getPostsFor userRepository.getUserByName(userName)
+    List getTimeline(userName) {
+        postRepository.getPostsFor userRepository.loadUserByName(userName)
     }
 }

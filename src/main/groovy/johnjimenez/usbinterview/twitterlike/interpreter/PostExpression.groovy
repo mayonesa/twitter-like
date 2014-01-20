@@ -1,13 +1,13 @@
 package johnjimenez.usbinterview.twitterlike.interpreter
 
-import groovy.transform.PackageScope
+import javax.inject.*
 
-import static johnjimenez.usbinterview.twitterlike.service.ServiceFacade.service
-
-@PackageScope class PostExpression {
-    String message, posterName
+@Named
+class PostExpression {
+    @Inject
+    def service
     
-    @PackageScope void interpret() {
+    def interpret(message, posterName) {
         service.post message, posterName
     }
 }

@@ -1,18 +1,19 @@
 package johnjimenez.usbinterview.twitterlike.service
 
-import static johnjimenez.usbinterview.twitterlike.repository.PostRepository.postRepository
-import static johnjimenez.usbinterview.twitterlike.repository.UserRepository.userRepository
+import javax.inject.Inject
+import org.springframework.stereotype.Service
 
+import johnjimenez.usbinterview.twitterlike.repository.*
+
+@Service
 class PostService {
-    private static PostService instance = new PostService()
+    @Inject
+    private PostRepository postRepository
     
-    private PostService() { }
+    @Inject
+    private UserRepository userRepository
     
-    static getInstance() {
-        instance
-    }
-    
-    void execute(String message, String posterName) {
+    def execute(message, posterName) {
         postRepository.addPost message, userRepository.getUserByName(posterName)
     }
 }

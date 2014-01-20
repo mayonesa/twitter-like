@@ -1,20 +1,21 @@
 package johnjimenez.usbinterview.twitterlike.service
 
-import static johnjimenez.usbinterview.twitterlike.repository.PostRepository.postRepository
-import static johnjimenez.usbinterview.twitterlike.repository.UserRepository.userRepository
+import javax.inject.Inject
+import org.springframework.stereotype.Service
 
+import johnjimenez.usbinterview.twitterlike.repository.*
+
+@Service
 class WallService {
-    private static WallService instance = new WallService()
+    @Inject
+    private PostRepository postRepository
     
-    private WallService() { }
+    @Inject
+    private UserRepository userRepository
     
-    static getInstance() {
-        instance
-    }
-    
-    List getWall(String userName) {
-        def user = userRepository.getUserByName(userName)
-        Set users = new HashSet(user.followees)
+    def getWall(userName) {
+        def user = userRepository.loadUserByName(userName)
+        def users = new HashSet(user.followees)
         users.add user
         postRepository.getPostsFor users
     }

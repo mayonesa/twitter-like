@@ -1,17 +1,26 @@
 package johnjimenez.usbinterview.twitterlike.domain
 
+import javax.persistence.*
+
+@Entity
 class User {
+    @Id
+    @Column(unique = true, nullable = false)
     String name
-    final Set<User> followees = new HashSet<User>()
     
-    void follow(User followee) {
+    @ManyToMany
+    Set<User> followees = new HashSet<User>()
+    
+    void follow(followee) {
         followees.add followee
     }
     
+    @Override
     String toString() {
         name
     }
 
+    @Override
     boolean equals(Object o) {
         if (o instanceof User) {
             return ((User) o).name == name
@@ -19,6 +28,7 @@ class User {
         false
     }
     
+    @Override
     int hashCode() {
         name.hashCode()
     }

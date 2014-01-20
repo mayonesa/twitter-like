@@ -1,38 +1,28 @@
 package johnjimenez.usbinterview.twitterlike.repository
 
-import groovy.transform.PackageScope
+import javax.inject.Inject
+import org.springframework.stereotype.Repository
+import org.hibernate.SessionFactory
+import org.hibernate.criterion.*
 
 import johnjimenez.usbinterview.twitterlike.domain.*
 
+@Repository
 class PostRepository {
-    private final static PostRepository instance = new PostRepository()
-    private final Deque<Post> allPosts = new ArrayDeque<Post>()
+    @Inject
+    private SessionFactory sf
     
-    private PostRepository() { }
-    
-    static PostRepository getPostRepository() {
-        instance
+    void addPost(message, poster) {
+        sf.currentSession.save(new Post(message, poster))
     }
     
-    void addPost(String message, User poster) {
-        allPosts.addFirst(new Post(message, poster))
+    def getPostsFor(User poster) {
+        getPostsFor([poster])
     }
     
-    List<Post> getPostsFor(User poster) {
-        getPostsFor([poster] as Set)
-    }
-    
-    List<Post> getPostsFor(Set<User> posters) {
-        List<Post> selectedPosts = []
-        for (post in allPosts) {
-            if (posters.contains(post.poster)) {
-                selectedPosts.add post
-            }
-        }
-        selectedPosts
-    }
-    
-    @PackageScope void clear() {
-        allPosts.clear()
+    def getPostsFor(Collection<User> posters) {
+        sf.currentSession.createCriteria(Post.class)
+            .add(Restrictions.in('poster', posters))
+            .addOrder(Order.desc('createDate')).list()
     }
 }

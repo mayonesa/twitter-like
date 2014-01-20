@@ -1,13 +1,15 @@
 package johnjimenez.usbinterview.twitterlike.ui
 
-import johnjimenez.usbinterview.twitterlike.interpreter.Evaluator
+import org.springframework.context.support.ClassPathXmlApplicationContext
 
 class ConsoleView {
     static void main(String[] args) {
         print 'Welcome to TwitterLike.\n> '
-        String output
-        System.in.eachLine {
-            output = new Evaluator(it).interpret()
+        def output
+        def evaluator = new ClassPathXmlApplicationContext("applicationContext.xml")
+            .getBean('evaluator')
+        System.in.eachLine { command ->
+            output = evaluator.interpret(command)
             if (output != null) {
                 println output
             }

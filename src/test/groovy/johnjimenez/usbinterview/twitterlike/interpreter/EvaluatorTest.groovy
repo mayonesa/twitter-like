@@ -1,36 +1,38 @@
 package johnjimenez.usbinterview.twitterlike.interpreter
 
-import org.junit.Test
-import groovy.mock.interceptor.MockFor
+import org.junit.*
 
 class EvaluatorTest {
-        
+    private def evaluator
+    
+    @Before
+    void setUp() {
+        evaluator = new Evaluator()
+    }
+    
     @Test
     void read() {
-        evaluate ReadExpression.class, 'something'
+        def result = new StringBuilder('read')
+        evaluator.readExpression = [interpret: { user -> result }] as ReadExpression
+        assert result == evaluator.interpret('something')
     }
     
     @Test
     void wall() {
-        evaluate WallExpression.class, 'something something'
+        def result = new StringBuilder('wall')
+        evaluator.wallExpression = [interpret: { user -> result }] as WallExpression
+        assert result == evaluator.interpret('something something')
     }
     
     @Test
     void post() {
-        evaluate PostExpression.class, 'something -> something'
+        evaluator.postExpression = [interpret: { message, poster -> }] as PostExpression
+        evaluator.interpret 'something -> something'
     }
     
     @Test
     void follow() {
-        evaluate FollowExpression.class, 'something something something'
-    }
-    
-    private void evaluate(expressionClass, command) {
-        def expressionMock = new MockFor(expressionClass)
-        def interpretationReturn = 'return'
-        expressionMock.demand.interpret() { interpretationReturn }
-        expressionMock.use {
-            assert interpretationReturn == new Evaluator(command).interpret()
-        }
+        evaluator.followExpression = [interpret: { follower, followee -> }] as FollowExpression
+        evaluator.interpret 'something something something'
     }    
 }
