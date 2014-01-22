@@ -1,15 +1,15 @@
 package johnjimenez.usbinterview.twitterlike.interpreter
 
 import javax.inject.*
-import org.springframework.scheduling.annotation.Async
+
+import johnjimenez.usbinterview.twitterlike.messageproducer.PostProducer
 
 @Named
 class PostExpression {
     @Inject
-    def service
+    PostProducer postProducer
     
-    @Async
     void interpret(message, posterName) {
-        service.post message, posterName
+        postProducer.produceAndSend message, posterName
     }
 }
