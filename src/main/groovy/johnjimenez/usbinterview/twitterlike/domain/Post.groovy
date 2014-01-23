@@ -7,6 +7,7 @@ import org.joda.time.LocalDateTime
 import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getElapsedTime
 
 @Entity
+// serializable to allow for jms transport
 class Post implements Serializable {
     @Id @GeneratedValue
     @Column(unique = true, nullable = false)

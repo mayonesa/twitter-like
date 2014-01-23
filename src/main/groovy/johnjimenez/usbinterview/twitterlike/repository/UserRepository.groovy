@@ -11,6 +11,7 @@ class UserRepository {
     @Inject
     private SessionFactory sf
     
+    // creates a user if one doesn't exist
     def getUserByName(name) {
         def user = sf.currentSession.get(User.class, name)
         if (user != null) {

@@ -3,6 +3,7 @@ package johnjimenez.usbinterview.twitterlike.domain
 import javax.persistence.*
 
 @Entity
+// serializable to allow for jms transport
 class User implements Serializable {
     @Id
     @Column(unique = true, nullable = false)

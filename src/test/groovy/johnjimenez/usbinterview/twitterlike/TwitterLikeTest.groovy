@@ -52,6 +52,7 @@ class TwitterLikeTest {
         new AssertEvaluationHelper(command).execute(expectationFragments)
     }
     
+    // inner class becuase state (actualResult) needed for cleaner processing
     private class AssertEvaluationHelper {
         private final static String POST_APPEND = ' ago)'
         private String actualResult

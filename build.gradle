@@ -4,6 +4,8 @@ apply plugin: 'groovy'
 apply plugin:'application'
 
 repositories {
+    // jboss repository referenced first because jms pom but not jar 
+    // available in maven central
     maven {
         url 'http://repository.jboss.org/nexus/content/groups/public-jboss'
     }
@@ -34,9 +36,11 @@ dependencies {
 mainClassName = 'johnjimenez.usbinterview.twitterlike.ui.ConsoleView'
  
 run {
+    // allows console input into twitter-like 
     standardInput = System.in
 }
  
+// allows automatic download and installation of gradle itself
 task wrapper(type: Wrapper) {
     gradleVersion = '1.9'
 }

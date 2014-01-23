@@ -5,7 +5,7 @@ import org.joda.time.Period
 import org.joda.time.format.PeriodFormatterBuilder
 
 class PostPrintHelper {
-
+    // allows for centralized required output formatting
     static def getStringBuilder(posts, getStringBuilderComponent) {
         def sb = new StringBuilder('\n')
         posts.each {
