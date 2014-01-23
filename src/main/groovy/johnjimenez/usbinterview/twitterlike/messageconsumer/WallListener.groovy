@@ -7,7 +7,7 @@ class WallListener {
     @Inject
     def service
     
-    def getWall(message) {
-        service.getWall message.text
+    def getWall(userName) {
+        service.getWall userName
     }
 }

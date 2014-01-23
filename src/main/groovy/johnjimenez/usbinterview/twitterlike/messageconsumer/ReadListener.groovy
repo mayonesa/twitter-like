@@ -7,7 +7,7 @@ class ReadListener {
     @Inject
     def service
     
-    def get(message) {
-        service.getTimeline message.text
+    def getTimeline(userName) {
+        service.getTimeline userName
     }
 }

@@ -3,7 +3,7 @@ package johnjimenez.usbinterview.twitterlike.domain
 import javax.persistence.*
 
 @Entity
-class User {
+class User implements Serializable {
     @Id
     @Column(unique = true, nullable = false)
     String name

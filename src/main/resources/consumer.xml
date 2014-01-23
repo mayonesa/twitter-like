@@ -9,8 +9,8 @@
 
     <listener-container>
         <listener destination="queue.post" ref="postListener" />
-        <listener destination="queue.read" ref="readListener" method="getTimeline" />
+        <listener destination="queue.read" ref="readListener" method="getTimeline" response-destination="queue.timeline" />
         <listener destination="queue.follow" ref="followListener" />
-        <listener destination="queue.wall" ref="wallListener" method="getWall" />
+        <listener destination="queue.wall" ref="wallListener" method="getWall" response-destination="queue.wallresponse" />
     </listener-container>
 </beans:beans>

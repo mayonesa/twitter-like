@@ -7,7 +7,7 @@ import org.joda.time.LocalDateTime
 import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getElapsedTime
 
 @Entity
-class Post {
+class Post implements Serializable {
     @Id @GeneratedValue
     @Column(unique = true, nullable = false)
 	long id

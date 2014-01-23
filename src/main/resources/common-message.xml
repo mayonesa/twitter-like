@@ -19,6 +19,9 @@
     <bean id="readDestination" class="org.apache.activemq.command.ActiveMQQueue">
          <constructor-arg value="queue.read"/>
     </bean>
+    <bean id="timelineDestination" class="org.apache.activemq.command.ActiveMQQueue">
+         <constructor-arg value="queue.timeline"/>
+    </bean>
         
     <bean id="followDestination" class="org.apache.activemq.command.ActiveMQQueue">
          <constructor-arg value="queue.follow"/>
@@ -26,5 +29,8 @@
         
     <bean id="wallDestination" class="org.apache.activemq.command.ActiveMQQueue">
          <constructor-arg value="queue.wall"/>
+    </bean>
+    <bean id="wallResponseDestination" class="org.apache.activemq.command.ActiveMQQueue">
+         <constructor-arg value="queue.wallresponse"/>
     </bean>
 </beans>

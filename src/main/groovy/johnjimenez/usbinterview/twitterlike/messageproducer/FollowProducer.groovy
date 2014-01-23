@@ -11,7 +11,7 @@ class FollowProducer {
     def followDestination
     
     def follow(followerName, followeeName) {
-        jmsTemplate.convertAndSend readDestination, 
+        jmsTemplate.convertAndSend followDestination, 
             ['followerName': followerName, 'followeeName': followeeName]
     }
 }

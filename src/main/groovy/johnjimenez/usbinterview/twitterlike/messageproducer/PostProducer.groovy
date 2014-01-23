@@ -12,8 +12,5 @@ class PostProducer {
     
     void post(post, poster) {
         jmsTemplate.convertAndSend postDestination, ['post': post, 'poster': poster]
-        
-        // to allow for slower computers
-        jmsTemplate.receive postDestination
     }
 }

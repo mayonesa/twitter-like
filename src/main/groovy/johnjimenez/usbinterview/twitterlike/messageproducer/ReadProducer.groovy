@@ -10,8 +10,11 @@ class ReadProducer {
     @Inject
     def readDestination
     
+    @Inject
+    def timelineDestination
+    
     def getTimeline(userName) {
         jmsTemplate.convertAndSend readDestination, userName
-        jmsTemplate.receiveAndConvert readDestination
+        jmsTemplate.receiveAndConvert timelineDestination
     }
 }

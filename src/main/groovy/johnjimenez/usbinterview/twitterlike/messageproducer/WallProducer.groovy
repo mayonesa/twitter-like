@@ -10,8 +10,11 @@ class WallProducer {
     @Inject
     def wallDestination
     
+    @Inject
+    def wallResponseDestination
+    
     def getWall(userName) {
         jmsTemplate.convertAndSend wallDestination, userName
-        jmsTemplate.receiveAndConvert wallDestination
+        jmsTemplate.receiveAndConvert wallResponseDestination
     }
 }
