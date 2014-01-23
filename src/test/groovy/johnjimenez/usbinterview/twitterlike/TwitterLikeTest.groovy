@@ -23,6 +23,10 @@ class TwitterLikeTest {
         String john = 'john'
         String johnPost1 = 'this is an integration test'
         _evaluate "$john -> $johnPost1"
+        
+        // give activeMQ a chance to get setup
+        Thread.sleep 2000
+        
         assertEvaluation john, johnPost1
         String johnWall = "$john - $johnPost1"
         assertEvaluation "$john wall", johnWall
@@ -49,6 +53,7 @@ class TwitterLikeTest {
     }
     
     private class AssertEvaluationHelper {
+        private final static String POST_APPEND = ' ago)'
         private String actualResult
         
         private AssertEvaluationHelper(command) {
@@ -58,10 +63,9 @@ class TwitterLikeTest {
         
         private void execute(String... expectationFragments) {
             int startIndex = 0
-            final String postAppend = ' ago)'
             for (expectationFragment in expectationFragments) {
                 startIndex = assertAndGetStartIndex expectationFragment, startIndex
-                startIndex = assertAndGetStartIndex postAppend, startIndex
+                startIndex = assertAndGetStartIndex POST_APPEND, startIndex
             }
         }
         
