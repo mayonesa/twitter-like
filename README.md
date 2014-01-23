@@ -5,7 +5,7 @@ A simplified, console-based version of a Twitter-like social networking applicat
 
 System requirements
 -------------------
-* Java 7 (preferred) or 6 (fails integration test if run on granularity of INFO or higher) 
+* Java 6/7
 
 Running instructions
 --------------------
@@ -18,7 +18,7 @@ or double-click on **run.bat** in Windows Explorer.
 Doing this will:
 
 1. download and install Gradle
-2. download and install project dependencies (groovy, spring, hibernate, JSR-330, userType, junit, slf4j, logback, and joda-time)
+2. download and install project dependencies (groovy, spring, hibernate, JSR-330, userType, junit, jms, activemq, and joda-time)
 3. compile the source code
 4. connect the standard input
 5. run twitter-like
