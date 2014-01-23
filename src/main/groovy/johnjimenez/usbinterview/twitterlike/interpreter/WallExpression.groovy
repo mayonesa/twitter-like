@@ -7,10 +7,10 @@ import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getStrin
 @Named
 class WallExpression {
     @Inject
-    def service
+    def wallProducer
     
-    StringBuilder interpret(userName) {
-        getStringBuilder service.getWall(userName), { post ->
+    def interpret(userName) {
+        getStringBuilder wallProducer.getWall(userName), { post ->
             "${post.poster} - $post"
         }
     }

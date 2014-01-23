@@ -4,11 +4,12 @@ import javax.inject.*
 import javax.jms.*
 
 @Named
-class PostListener implements MessageListener {
+class FollowListener implements MessageListener {
     @Inject
     def service
     
     void onMessage(final Message message) {
-        service.post message.getString('post'), message.getString('poster')
+        service.follow message.getString('followerName'), 
+            message.getString('followeeName')
     }
 }

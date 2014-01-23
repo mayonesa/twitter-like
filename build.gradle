@@ -24,32 +24,15 @@ dependencies {
         'org.hsqldb:hsqldb:2.3.1',
         'javax.jms:jms:1.1',
         'javax.inject:javax.inject-tck:1',
-        'org.jadira.usertype:usertype.core:3.0.0.CR3'
+        'org.jadira.usertype:usertype.core:3.0.0.CR3',
+        'org.apache.activemq:activemq-all:5.9.0'
     )
     
-    compile ('org.apache.activemq:activemq-all:5.5.1') {
-        exclude group: 'org.slf4j', module: 'log4j-over-slf4j'
-    }
- 
-    // Logging
-    compile 'ch.qos.logback:logback-classic:1.0.13'
-    runtime (
-        'org.slf4j:slf4j-api:1.7.5',
-        'org.slf4j:jcl-over-slf4j:1.7.5',
-        'org.slf4j:log4j-over-slf4j:1.7.5'
-    )
-
     testCompile 'junit:junit:4.11'
 }
 
 mainClassName = 'johnjimenez.usbinterview.twitterlike.ui.ConsoleView'
  
-configurations {
-//    all*.exclude group: 'commons-logging', module: 'commons-logging'
-    all*.exclude group: 'log4j', module: 'log4j'
-    all*.exclude group: 'org.slf4j', version: '1.6'
-}
-
 run {
     standardInput = System.in
 }

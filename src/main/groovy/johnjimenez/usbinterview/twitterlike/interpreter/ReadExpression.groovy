@@ -7,10 +7,10 @@ import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getStrin
 @Named
 class ReadExpression {
     @Inject
-    def service
+    def readProducer
     
-    StringBuilder interpret(userName) {
-        getStringBuilder service.getTimeline(userName), { post ->
+    def interpret(userName) {
+        getStringBuilder readProducer.getTimeline(userName), { post ->
             post
         }
     }

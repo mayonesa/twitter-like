@@ -13,10 +13,18 @@
     </bean>
         
     <bean id="postDestination" class="org.apache.activemq.command.ActiveMQQueue">
-        <property name="brokerURL" value="queue.post"/>
+         <constructor-arg value="queue.post"/>
     </bean>
         
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="connectionFactory" />
+    <bean id="readDestination" class="org.apache.activemq.command.ActiveMQQueue">
+         <constructor-arg value="queue.read"/>
+    </bean>
+        
+    <bean id="followDestination" class="org.apache.activemq.command.ActiveMQQueue">
+         <constructor-arg value="queue.follow"/>
+    </bean>
+        
+    <bean id="wallDestination" class="org.apache.activemq.command.ActiveMQQueue">
+         <constructor-arg value="queue.wall"/>
     </bean>
 </beans>

@@ -1,3 +1,5 @@
 **/*~
 .gradle
 build/
+twitter-like.log
+activemq-data

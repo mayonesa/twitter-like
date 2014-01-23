@@ -2,14 +2,12 @@ package johnjimenez.usbinterview.twitterlike.interpreter
 
 import javax.inject.*
 
-import johnjimenez.usbinterview.twitterlike.messageproducer.PostProducer
-
 @Named
 class PostExpression {
     @Inject
-    PostProducer postProducer
+    def postProducer
     
     void interpret(message, posterName) {
-        postProducer.produceAndSend message, posterName
+        postProducer.post message, posterName
     }
 }

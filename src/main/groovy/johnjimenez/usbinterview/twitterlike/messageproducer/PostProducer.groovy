@@ -1,18 +1,19 @@
 package johnjimenez.usbinterview.twitterlike.messageproducer
 
 import javax.inject.*
-import javax.jms.Destination
-import org.springframework.jms.core.JmsTemplate
 
 @Named
 class PostProducer {
     @Inject
-    JmsTemplate jmsTemplate
+    def jmsTemplate
     
     @Inject
-    Destination postDestination
+    def postDestination
     
-    def produceAndSend(post, poster) {
-        jmsTemplate.send postDestination, ['post': post, 'poster': poster]
+    void post(post, poster) {
+        jmsTemplate.convertAndSend postDestination, ['post': post, 'poster': poster]
+        
+        // to allow for slower computers
+        jmsTemplate.receive postDestination
     }
 }

@@ -2,7 +2,7 @@ package johnjimenez.usbinterview.twitterlike
 
 import org.junit.Test
 import  org.junit.runner.RunWith
-import groovy.util.logging.Slf4j
+import groovy.util.logging.Log4j
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 import johnjimenez.usbinterview.twitterlike.interpreter.Evaluator
 
-@Slf4j
+@Log4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration('classpath:applicationContext-test.xml')
 @Transactional
