@@ -1,5 +1,3 @@
-println 'setting up...'
-
 apply plugin: 'groovy'
 apply plugin:'application'
 
@@ -44,3 +42,7 @@ run {
 task wrapper(type: Wrapper) {
     gradleVersion = '1.9'
 }
+
+println 'starting...'
+
+
