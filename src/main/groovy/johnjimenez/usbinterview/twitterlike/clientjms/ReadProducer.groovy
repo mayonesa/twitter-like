@@ -1,8 +1,10 @@
-package johnjimenez.usbinterview.twitterlike.messageproducer
+package johnjimenez.usbinterview.twitterlike.clientjms
 
+import groovy.util.logging.Log4j
 import javax.inject.*
 
 @Named
+@Log4j
 class ReadProducer {
     @Inject
     def jmsTemplate
@@ -15,6 +17,7 @@ class ReadProducer {
     
     def getTimeline(userName) {
         jmsTemplate.convertAndSend readDestination, userName
+        log.debug 'about to receive timeline'
         jmsTemplate.receiveAndConvert timelineDestination
     }
 }

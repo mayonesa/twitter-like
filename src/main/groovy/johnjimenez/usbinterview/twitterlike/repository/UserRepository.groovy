@@ -1,11 +1,14 @@
 package johnjimenez.usbinterview.twitterlike.repository
 
+import groovy.util.logging.Log4j
 import javax.inject.Inject
 import org.springframework.stereotype.Repository
-import org.hibernate.SessionFactory
+import org.hibernate.*
 
 import johnjimenez.usbinterview.twitterlike.domain.User
+import johnjimenez.usbinterview.twitterlike.exception.UserNotFoundException
 
+@Log4j
 @Repository
 class UserRepository {
     @Inject
@@ -22,7 +25,18 @@ class UserRepository {
     }
     
     def loadUserByName(name) {
-        sf.currentSession.load User.class, name
+        try {
+            def user = sf.currentSession.load User.class, name
+            def userName = user?.name
+            if (userName?.empty) {
+                throw new ObjectNotFoundException()
+            }
+            log.debug "$userName found"
+            user
+        } catch(ObjectNotFoundException onfe) {
+            log.info "$name is not a user"
+            throw new UserNotFoundException(name)
+        }
     }
     
     void makeFollow(followerName, followeeName) {

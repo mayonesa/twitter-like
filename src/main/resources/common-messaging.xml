@@ -33,4 +33,8 @@
     <bean id="wallResponseDestination" class="org.apache.activemq.command.ActiveMQQueue">
          <constructor-arg value="queue.wallresponse"/>
     </bean>
+
+    <bean id="errorDestination" class="org.apache.activemq.command.ActiveMQQueue">
+         <constructor-arg value="queue.error"/>
+    </bean>
 </beans>

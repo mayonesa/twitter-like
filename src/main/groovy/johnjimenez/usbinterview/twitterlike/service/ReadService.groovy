@@ -14,6 +14,7 @@ class ReadService {
     private UserRepository userRepository
     
     List getTimeline(userName) {
-        postRepository.getPostsFor userRepository.loadUserByName(userName)
+        def poster = userRepository.loadUserByName(userName)
+        postRepository.getPostsFor poster
     }
 }

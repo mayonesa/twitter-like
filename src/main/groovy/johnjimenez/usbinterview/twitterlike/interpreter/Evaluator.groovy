@@ -2,6 +2,8 @@ package johnjimenez.usbinterview.twitterlike.interpreter
 
 import javax.inject.*
 
+import static johnjimenez.usbinterview.twitterlike.ui.ConsoleView.HELP_COMMAND
+
 // <command> ::== <subject> ' ' <action> ' ' <object>
 // <subject> ::== <user-name> | <follower> | <poster>
 // <action>  ::== '' | 'follows' | '->' | 'wall'
@@ -13,6 +15,11 @@ import javax.inject.*
 // outside of the entered command.
 @Named
 class Evaluator {
+    public final static def WALL = 'wall'
+    public final static def POST = '->'
+    public final static def FOLLOWS = 'follows'
+    public final static def ERROR_MESSAGE = "ERROR: invalid command (type \'$HELP_COMMAND\' for help)"
+    
     @Inject
     def postExpression
     
@@ -26,22 +33,25 @@ class Evaluator {
     def followExpression
     
     def interpret(command) {
-        Scanner commandTokens = new Scanner(command).useDelimiter(' ')
+        Scanner commandTokens = new Scanner(command)
         def subject = commandTokens.next()
         if (!commandTokens.hasNext()) {
-            readExpression.interpret subject
+            return readExpression.interpret(subject)
         } else {
             def action = commandTokens.next()
             if (!commandTokens.hasNext()) {
-                wallExpression.interpret subject
+                if (action == WALL) {
+                    return wallExpression.interpret(subject)
+                }
             } else {
                 def object = commandTokens.skip(' ').nextLine()
-                if (action == '->') {
-                    postExpression.interpret object, subject
-                } else {
-                    followExpression.interpret subject, object
-                }
+                if (action == POST) {
+                    return postExpression.interpret(object, subject)
+                } else if (action == FOLLOWS && object.split().length == 1) {
+                    return followExpression.interpret(subject, object)
+                } 
             }
         }
+        ERROR_MESSAGE
     }
 }

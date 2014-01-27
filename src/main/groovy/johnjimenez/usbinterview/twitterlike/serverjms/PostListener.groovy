@@ -1,4 +1,4 @@
-package johnjimenez.usbinterview.twitterlike.messageconsumer
+package johnjimenez.usbinterview.twitterlike.serverjms
 
 import javax.inject.*
 import javax.jms.*
@@ -8,6 +8,7 @@ class PostListener implements MessageListener {
     @Inject
     def service
     
+    @Override
     void onMessage(final Message message) {
         service.post message.getString('post'), message.getString('poster')
     }

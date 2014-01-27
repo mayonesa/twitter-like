@@ -2,7 +2,7 @@ package johnjimenez.usbinterview.twitterlike.interpreter
 
 import javax.inject.*
 
-import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getStringBuilder
+import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getConsoleOutput
 
 @Named
 class WallExpression {
@@ -10,7 +10,7 @@ class WallExpression {
     def wallProducer
     
     def interpret(userName) {
-        getStringBuilder wallProducer.getWall(userName), { post ->
+        getConsoleOutput wallProducer.getWall(userName), { post ->
             "${post.poster} - $post"
         }
     }

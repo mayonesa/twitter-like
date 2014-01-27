@@ -2,7 +2,7 @@ package johnjimenez.usbinterview.twitterlike.interpreter
 
 import javax.inject.*
 
-import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getStringBuilder
+import static johnjimenez.usbinterview.twitterlike.util.PostPrintHelper.getConsoleOutput
 
 @Named
 class ReadExpression {
@@ -10,7 +10,7 @@ class ReadExpression {
     def readProducer
     
     def interpret(userName) {
-        getStringBuilder readProducer.getTimeline(userName), { post ->
+        getConsoleOutput readProducer.getTimeline(userName), { post ->
             post
         }
     }

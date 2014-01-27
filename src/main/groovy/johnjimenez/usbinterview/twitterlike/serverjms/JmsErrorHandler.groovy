@@ -1,0 +1,20 @@
+package johnjimenez.usbinterview.twitterlike.serverjms
+
+import groovy.util.logging.Log4j
+import org.springframework.util.ErrorHandler
+import javax.inject.*
+
+@Named
+@Log4j
+class JmsErrorHandler implements ErrorHandler {
+    @Inject
+    def errorJmsTemplate
+    
+    @Override
+    void handleError(Throwable t) {
+        def originalException = t.cause ?: t
+        def message = originalException.message
+        log.info message
+        errorJmsTemplate.convertAndSend message
+    }
+}

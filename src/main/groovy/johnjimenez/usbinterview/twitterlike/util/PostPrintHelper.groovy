@@ -6,12 +6,15 @@ import org.joda.time.format.PeriodFormatterBuilder
 
 class PostPrintHelper {
     // allows for centralized required output formatting
-    static def getStringBuilder(posts, getStringBuilderComponent) {
-        def sb = new StringBuilder('\n')
-        posts.each {
-            sb.append "${getStringBuilderComponent(it)}\n"
+    static def getConsoleOutput(posts, getConsoleOutputComponent) {
+        def consoleOutput
+        if (posts != null) {
+            consoleOutput = new StringBuilder('\n')
+            posts.each {
+                consoleOutput.append "${getConsoleOutputComponent(it)}\n"
+            }
         }
-        sb
+        consoleOutput
     }
     
     static def getElapsedTime(initialDate) {

@@ -7,15 +7,15 @@
        		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-    <import resource="classpath:producer.xml" />
-    <import resource="classpath:consumer.xml" />
+    <import resource="classpath:client-jms.xml" />
+    <import resource="classpath:server-jms.xml" />
 
 	<!-- Config overrides -->
 	<context:property-placeholder location="classpath:application-test.properties" ignore-resource-not-found="true"/>
 
 	<context:component-scan base-package="johnjimenez.usbinterview.twitterlike.repository,
 	    johnjimenez.usbinterview.twitterlike.service, johnjimenez.usbinterview.twitterlike.interpreter,
-	    johnjimenez.usbinterview.twitterlike.messageproducer, johnjimenez.usbinterview.twitterlike.messageconsumer" />
+	    johnjimenez.usbinterview.twitterlike.clientjms, johnjimenez.usbinterview.twitterlike.serverjms" />
 	
 	<!-- HSQLDB data source -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

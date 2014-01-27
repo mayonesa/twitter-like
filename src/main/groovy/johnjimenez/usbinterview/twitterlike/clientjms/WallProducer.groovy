@@ -1,4 +1,4 @@
-package johnjimenez.usbinterview.twitterlike.messageproducer
+package johnjimenez.usbinterview.twitterlike.clientjms
 
 import javax.inject.*
 

@@ -1,4 +1,4 @@
-package johnjimenez.usbinterview.twitterlike.messageproducer
+package johnjimenez.usbinterview.twitterlike.clientjms
 
 import javax.inject.*
 
@@ -13,5 +13,8 @@ class FollowProducer {
     def follow(followerName, followeeName) {
         jmsTemplate.convertAndSend followDestination, 
             ['followerName': followerName, 'followeeName': followeeName]
+            
+        // give a chance to receive error
+        Thread.sleep 2000
     }
 }
