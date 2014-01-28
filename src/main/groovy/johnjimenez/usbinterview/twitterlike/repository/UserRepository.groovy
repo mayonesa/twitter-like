@@ -24,7 +24,7 @@ class UserRepository {
         }
     }
     
-    def loadUserByName(name) {
+    def loadUserByName(name) throws UserNotFoundException {
         try {
             def user = sf.currentSession.load User.class, name
             def userName = user?.name
@@ -39,7 +39,7 @@ class UserRepository {
         }
     }
     
-    void makeFollow(followerName, followeeName) {
+    void makeFollow(followerName, followeeName) throws UserNotFoundException {
         def follower = loadUserByName(followerName)
         follower.follow loadUserByName(followeeName)
         sf.currentSession.update follower

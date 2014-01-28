@@ -4,6 +4,8 @@ import javax.inject.Inject
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
+import johnjimenez.usbinterview.twitterlike.exception.UserNotFoundException
+
 @Service('service')
 @Transactional(readOnly = true)
 class ServiceFacade {
@@ -24,16 +26,16 @@ class ServiceFacade {
         postService.execute message, posterName
     }
     
-    def getTimeline(String userName) {
+    def getTimeline(String userName) throws UserNotFoundException {
         readService.getTimeline userName
     }
     
     @Transactional(readOnly = false)
-    def follow(String followerName, String followeeName) {
+    def follow(String followerName, String followeeName) throws UserNotFoundException {
         followService.execute followerName, followeeName
     }
     
-    def getWall(String userName) {
+    def getWall(String userName) throws UserNotFoundException {
         wallService.getWall userName
     }
 }

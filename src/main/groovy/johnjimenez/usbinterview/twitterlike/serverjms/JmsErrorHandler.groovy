@@ -12,9 +12,13 @@ class JmsErrorHandler implements ErrorHandler {
     
     @Override
     void handleError(Throwable t) {
-        def originalException = t.cause ?: t
-        def message = originalException.message
-        log.info message
-        errorJmsTemplate.convertAndSend message
+        if (t instanceof Exception) {
+            def originalException = t.cause ?: t
+            def message = originalException.message
+            log.info message
+            errorJmsTemplate.convertAndSend message
+        } else {
+            throw t
+        }
     }
 }
