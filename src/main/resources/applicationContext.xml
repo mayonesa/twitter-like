@@ -13,9 +13,8 @@
 	<!-- Config overrides -->
 	<context:property-placeholder location="classpath:application.properties" ignore-resource-not-found="true"/>
 
-	<context:component-scan base-package="johnjimenez.usbinterview.twitterlike.repository,
-	    johnjimenez.usbinterview.twitterlike.service, johnjimenez.usbinterview.twitterlike.interpreter,
-	    johnjimenez.usbinterview.twitterlike.clientjms, johnjimenez.usbinterview.twitterlike.serverjms" />
+	<context:component-scan base-package="twitterlike.repository, twitterlike.service, 
+	    twitterlike.interpreter, twitterlike.clientjms, twitterlike.serverjms" />
 	
 	<!-- HSQLDB data source -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -28,7 +27,7 @@
 	<!-- Hibernate session factory -->    
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="${domainPackageToScan:johnjimenez.usbinterview.twitterlike.domain}" />
+        <property name="packagesToScan" value="${domainPackageToScan:twitterlike.domain}" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">${hibernate.dialect:org.hibernate.dialect.HSQLDialect}</prop>

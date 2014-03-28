@@ -10,7 +10,7 @@
         </layout> 
     </appender> 
 
-    <logger name="johnjimenez.usbinterview.twitterlike">
+    <logger name="twitterlike">
         <level value="debug"/> 
     </logger>
     <root> 

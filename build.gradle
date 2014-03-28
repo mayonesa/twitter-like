@@ -31,7 +31,7 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 
-mainClassName = 'johnjimenez.usbinterview.twitterlike.ui.ConsoleView'
+mainClassName = 'twitterlike.ui.ConsoleView'
  
 run {
     // allows console input into twitter-like 
